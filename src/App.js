@@ -11,8 +11,9 @@ function App() {
     console.log(searchParams.get('originUrl'))
 
     setTimeout(() => {
-      window.open(`${searchParams.get('originUrl')}`, '_blank')
-    }, [5000])
+      console.log("searchParams.get('originUrl')", searchParams.get('originUrl'))
+      window.open(`${searchParams.get('originUrl')}`, '_self')
+    }, [2000])
       // const dataToSend = { message: 'Hello from external link!' };
       
       // Send data to the parent window (the React application)
