@@ -1,7 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+      const dataToSend = { message: 'Hello from external link!' };
+      
+      // Send data to the parent window (the React application)
+      window.opener.postMessage(dataToSend, 'http://localhost:3000/lake-tahoe');
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
