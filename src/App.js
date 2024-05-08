@@ -1,14 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
+// import { useLocation } from 'react-router-dom';
 
 function App() {
-
+  // const location = useLocation();
+  
   useEffect(() => {
-      const dataToSend = { message: 'Hello from external link!' };
+    const searchParams = new URLSearchParams(window.location?.search);
+    console.log(searchParams.get('originUrl'))
+
+    setTimeout(() => {
+      window.open(`${searchParams.get('originUrl')}`, '_blank')
+    }, [5000])
+      // const dataToSend = { message: 'Hello from external link!' };
       
       // Send data to the parent window (the React application)
-      window.opener.postMessage(dataToSend, 'http://localhost:3000/lake-tahoe');
   }, [])
   return (
     <div className="App">
