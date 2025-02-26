@@ -6,12 +6,17 @@ pipeline {
                 bat 'npm install'
             }
         }
-        stage('Deliver') { 
+        stage('Test') {
             steps {
-                bat 'jenkins\\scripts\\deliver.bat' 
-                input message: 'Finished using the website? (Click "Proceed" to continue)' 
-                bat 'jenkins\\scripts\\kill.bat' 
+                powershell '.\\jenkins\\scripts\\test.ps1'
             }
         }
+        // stage('Deliver') { 
+        //     steps {
+        //         bat 'jenkins\\scripts\\deliver.bat' 
+        //         input message: 'Finished using the website? (Click "Proceed" to continue)' 
+        //         bat 'jenkins\\scripts\\kill.bat' 
+        //     }
+        // }
     }
 }
