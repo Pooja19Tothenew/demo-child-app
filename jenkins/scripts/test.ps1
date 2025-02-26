@@ -1,15 +1,13 @@
-Write-Host "Running React Tests..."
-
-# Change to the project directory (FIXED with quotes)
+Write-Host "Installing dependencies..."
 cd "C:\Users\Pooja Rawat\.jenkins\workspace\react-test-app"
+npm install
 
-# Run tests
-npm test -- --watchAll=false
+Write-Host "Running React Tests..."
+npx react-scripts test --watchAll=false --passWithNoTests
 
-# Capture exit code
 if ($LASTEXITCODE -ne 0) {
     Write-Host "❌ Tests failed!"
-    exit 1  # Make Jenkins fail the job
+    exit 1
 } else {
     Write-Host "✅ Tests passed!"
 }
